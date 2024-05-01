@@ -22,7 +22,7 @@ public class SportController {
 	@Autowired
 	SportService sportService;
 	
-	@RequestMapping("/listeSports")
+	@RequestMapping("/ListeSports")
 	public String listeSports(ModelMap modelMap, 
 	                          @RequestParam(name = "page", defaultValue = "0") int page,
 	                          @RequestParam(name = "size", defaultValue = "2") int size) {

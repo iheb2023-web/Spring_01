@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.iheb.sport.entities.Genre;
 import com.iheb.sport.entities.sport;
 import com.iheb.sport.repo.SportRepository;
 
@@ -50,4 +51,41 @@ public class SportServiceImpl implements SportService {
 	public Page<sport> getAllSportsParPage(int page, int size) { 
 	return sportRepository.findAll(PageRequest.of(page, size)); 
 	} 
+	
+	
+	@Override
+	public List<sport> findByNomSport(String nom) {
+	    return sportRepository.findByNomSport(nom);
+	}
+
+	@Override
+	public List<sport> findByNomSportContains(String nom) {
+	    return sportRepository.findByNomSportContains(nom);
+	}
+
+	@Override
+	public List<sport> findByNomDateFondation(String nom, int annee) {
+	    return sportRepository.findByNomAndYear(nom, annee);
+	}
+
+	@Override
+	public List<sport> findByGenre(Genre genre) {
+	    return sportRepository.findByGenre(genre);
+	}
+
+	@Override
+	public List<sport> findByGenreIdGen(Long id) {
+	    return sportRepository.findByGenreIdGen(id);
+	}
+
+	@Override
+	public List<sport> findByOrderByNomSportAsc() {
+	    return sportRepository.findByOrderByNomSportAsc();
+	}
+
+	@Override
+	public List<sport> trierSportsNomsDate() {
+	    return sportRepository.trierSportsNomsDateFondation();
+	}
+
 }

@@ -1,13 +1,11 @@
 package com.iheb.sport.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.*;
+
 
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 @Entity
 public class sport {
@@ -19,6 +17,9 @@ public class sport {
     private String description;
     @Temporal(TemporalType.DATE)
     private Date dateFondation;
+
+    @ManyToOne
+    private Genre genre;
 
 
     public sport( String nomSport, String description, Date dateFondation) {
@@ -62,7 +63,15 @@ public class sport {
         this.dateFondation = dateFondation;
     }
 
-	@Override
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    @Override
 	public String toString() {
 		return "sport [idSport=" + idSport + ", nomSport=" + nomSport + ", description=" + description
 				+ ", dateFondation=" + dateFondation + "]";
