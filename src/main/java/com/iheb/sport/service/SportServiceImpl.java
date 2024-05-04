@@ -2,6 +2,7 @@ package com.iheb.sport.service;
 
 import java.util.List;
 
+import com.iheb.sport.repo.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,9 @@ public class SportServiceImpl implements SportService {
 	
 	@Autowired
 	SportRepository sportRepository;
+
+	@Autowired
+	GenreRepository genreRepository;
 
 	@Override
 	public sport saveSport(sport p) {
@@ -86,6 +90,11 @@ public class SportServiceImpl implements SportService {
 	@Override
 	public List<sport> trierSportsNomsDate() {
 	    return sportRepository.trierSportsNomsDateFondation();
+	}
+
+	@Override
+	public List<Genre> getAllGenres() {
+		return genreRepository.findAll();
 	}
 
 }

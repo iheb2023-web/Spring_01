@@ -20,6 +20,7 @@ public class SportApplication implements CommandLineRunner {
 	@Autowired
 	private RepositoryRestConfiguration repositoryRestConfiguration;
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(SportApplication.class, args);
 	}

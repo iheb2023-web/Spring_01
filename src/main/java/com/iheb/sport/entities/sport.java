@@ -1,11 +1,25 @@
 package com.iheb.sport.entities;
 
-import javax.persistence.*;
-
 
 import java.util.Date;
 
-import javax.persistence.Entity;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+
+
 
 @Entity
 public class sport {
@@ -13,9 +27,18 @@ public class sport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSport;
+    
+    @NotNull
+    @Size (min = 4,max = 15)
     private String nomSport;
+    
+    @NotEmpty
     private String description;
+    
+    @NotNull
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent
     private Date dateFondation;
 
     @ManyToOne

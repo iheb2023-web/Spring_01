@@ -16,6 +16,8 @@ public interface SportService {
 	sport getSport(Long id);
 	List<sport> getAllSports();
 	Page<sport> getAllSportsParPage(int page, int size);
+
+	List<Genre> getAllGenres();
 	
 	List<sport> findByNomSport(String nom);
 	List<sport> findByNomSportContains(String nom);
